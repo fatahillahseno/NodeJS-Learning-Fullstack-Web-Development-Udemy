@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/fatahillahseno/Learning-Fullstack-Web-Development-Udemy-NodeJS/issues"
   },
-  "homepage": "https://github.com/fatahillahseno/Learning-Fullstack-Web-Development-Udemy-NodeJS#readme"
+  "homepage": "https://github.com/fatahillahseno/Learning-Fullstack-Web-Development-Udemy-NodeJS#readme",
+  "dependencies": {
+    "date-fns": "^4.1.0"
+  }
 }
