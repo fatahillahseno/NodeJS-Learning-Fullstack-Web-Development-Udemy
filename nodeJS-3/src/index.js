@@ -5,8 +5,12 @@ const app = express(); //express app
 const port = 3001; // terhubung dengan http://localhost:3001
 
 // dapatkan route, di bawah ini adalah get route
-app.get("/", (req, res) => {
-  console.log("Testing");
+app.get("/:category", (req, res) => {
+  console.log("Request URL:", req.url);
+  console.log("Request Params:", req.params);
+  console.log("Request Query:", req.query);
+  console.log("Request Headers:", req.headers);
+  console.log("Request Method:", req.method);
   res.send("Hello World");
 }); //akses ke default route
 
