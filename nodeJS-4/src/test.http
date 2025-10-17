@@ -1,0 +1,6 @@
+# optional paramas
+GET http://localhost:3001/tasks
+# default
+GET http://localhost:3001/users/admin/
+# with query
+GET http://localhost:3001/users/admin/?order=asc&limit=10&page=1
