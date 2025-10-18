@@ -1,38 +1,18 @@
 const express = require("express");
-const app = express();
+const tasksRouter = require("./tasks/tasks.router.js"); //import task router
 
+const app = express();
 const port = 3001;
+
+const middleWare = function (req, res, next) {
+  req.info = { appname: "Tasks Manager", author: "Sense" };
+  next();
+};
+
+app.use(middleWare);
+// definie all the routes
+app.use("/", tasksRouter); // root
+
 app.listen(port, () => {
   console.log(`App Listening to Port: ${port}`);
-});
-
-// ini adalah route
-app.get("/some.text", (req, res) => {
-  console.log("\nRequest URL", req.url);
-  res.send("Hello World");
-});
-
-app.get("/posts?", (req, res) => {
-  //karakter s menjadi optional
-  console.log("\nRequest URL", req.url);
-  res.send("Hello World");
-});
-
-app.get("/tag*", (req, res) => {
-  //huruf setelah kata tag bisa diisi apa saja
-  // " * " disebut wild card
-  console.log("\nRequest URL", req.url);
-  res.send("Hello World");
-});
-
-app.get("/error/*", (req, res) => {
-  console.log("\nRequest URL", req.url);
-  res.send("Hello World");
-});
-
-// menggunakan regular expression
-// tidak perlu menggunakan kutip ganda
-app.get(/.*fly$/, (req, res) => {
-  console.log("\nRequest URL", req.url);
-  res.send("Hello World");
 });
