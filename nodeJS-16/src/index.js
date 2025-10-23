@@ -8,6 +8,7 @@ const cors = require("cors");
 const tasksRouter = require("./tasks/tasks.router.js");
 const authRouter = require("./auth/auth.router.js");
 const usersRouter = require("./users/users.router.js");
+const mongoose = require("mongoose");
 
 const app = express();
 const port = 3001;
@@ -36,6 +37,24 @@ app.use((req, res) => {
   res.status(StatusCodes.NOT_FOUND).json(null);
 });
 
-app.listen(port, () => {
-  console.log(`App Listening to Port: ${port}`);
-});
+// async function that communicati with database
+async function bootstrap() {
+  try {
+    await mongoose.connect(
+      "mongodb+srv://fatahsbs:ZukzuztP6WJlKG1v@nodejs.byd7tty.mongodb.net/?retryWrites=true&w=majority&appName=nodejs",
+      { dbName: "fullstacksTasks" }
+    );
+
+    console.log("Connected to MongoDB");
+
+    app.listen(port, () => {
+      console.log(`App Listening to Port: ${port}`);
+    });
+  } catch (error) {
+    console.log(error);
+
+    process.exit(1);
+  }
+}
+
+bootstrap();
