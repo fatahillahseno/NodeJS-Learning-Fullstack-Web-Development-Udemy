@@ -1,41 +1,15 @@
 const { StatusCodes, ReasonPhrases } = require("http-status-codes");
-const Task = require("./task.schema.js");
-const responseFormatter = require("../middleware/responseFormatter.js");
+const createTaskProvider = require("./providers/createTask.provider.js");
+const getTasksProvider = require("./providers/getTasks.provider.js");
 
-function handleGetTasks(req, res) {
-  let response = [
-    {
-      title: "Title of the task",
-      date: "2025-01-01T12:00:00",
-      description:
-        "Ini adalah deskrispi yang ada di dalam task, berisikan apa saja yang akan dilakukan",
-      priority: "normal",
-      status: "todo",
-    },
-    {
-      title: "Title of the task 2",
-      date: "2025-01-01T12:00:00",
-      description:
-        "Ini adalah deskrispi yang ada di dalam task, berisikan apa saja yang akan dilakukan",
-      priority: "normal",
-      status: "todo",
-    },
-  ];
+async function handleGetTasks(req, res) {
+  const task = await getTasksProvider(req, res);
 
-  res.status(StatusCodes.OK).json(response);
+  res.status(StatusCodes.OK).json(task);
 }
 
 async function handlePostTasks(req, res) {
-  const task = new Task({
-    title: req.body.title,
-    description: req.body.description,
-    status: req.body.status,
-    priority: req.body.priority,
-    dueDate: req.body.dueDate,
-  });
-
-  await task.save();
-
+  const task = await createTaskProvider(req, res);
   res.status(StatusCodes.CREATED).json(task);
 }
 

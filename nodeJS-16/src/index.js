@@ -41,7 +41,7 @@ app.use((req, res) => {
 async function bootstrap() {
   try {
     await mongoose.connect(
-      "mongodb+srv://fatahsbs:ZukzuztP6WJlKG1v@nodejs.byd7tty.mongodb.net/?retryWrites=true&w=majority&appName=nodejs",
+      "mongodb+srv://fatahsbs:ZukzuztP6WJlKG1v@nodejs.byd7tty.mongodb.net/",
       { dbName: "fullstacksTasks" }
     );
 
