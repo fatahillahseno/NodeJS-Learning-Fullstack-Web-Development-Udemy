@@ -1,7 +1,8 @@
-const { StatusCodes, ReasonPhrases } = require("http-status-codes");
+const { StatusCodes } = require("http-status-codes");
 const createTaskProvider = require("./providers/createTask.provider.js");
 const getTasksProvider = require("./providers/getTasks.provider.js");
 const updateTaskProvider = require("./providers/updateTask.provider.js");
+const deleteTaskProvider = require("./providers/deleteTask.provider.js");
 
 async function handleGetTasks(req, res) {
   const task = await getTasksProvider(req, res);
@@ -19,8 +20,9 @@ async function handlePatchTasks(req, res) {
   res.status(StatusCodes.OK).json(updatedTask);
 }
 
-function handleDeleteTasks(req, res) {
-  res.send("DELETE Tasks Controller");
+async function handleDeleteTasks(req, res) {
+  const deletedTask = await deleteTaskProvider(req, res);
+  res.status(StatusCodes.OK).json(deletedTask);
 }
 
 module.exports = {
