@@ -38,7 +38,7 @@ const userSchema = new Schema({
         );
       },
       message: () =>
-        `Password must include at least one number, one uppercase letter, one lowercase letter, and one special character `,
+        `Password must include at least one number, one uppercase letter, one lowercase letter, and one special character.`,
     },
   },
 });

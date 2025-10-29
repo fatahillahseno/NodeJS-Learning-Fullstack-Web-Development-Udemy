@@ -4,8 +4,8 @@ const { StatusCodes } = require("http-status-codes");
 const errorLogger = require("../../helpers/errorLogger.helper.js");
 
 async function createTaskProvider(req, res) {
-  const validatedResult = matchedData(req);
-  const task = new Task(validatedResult);
+  const validatedData = matchedData(req);
+  const task = new Task(validatedData);
 
   try {
     await task.save();
