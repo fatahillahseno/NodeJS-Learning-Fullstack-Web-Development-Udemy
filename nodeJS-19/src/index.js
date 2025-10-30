@@ -20,7 +20,7 @@ dotenv.config({
 });
 
 const app = express();
-const port = 3001;
+const port = parseInt(process.env.PORT);
 
 app.use(express.json());
 
@@ -50,10 +50,9 @@ app.use((req, res) => {
 // async function that communicati with database
 async function bootstrap() {
   try {
-    await mongoose.connect(
-      "mongodb+srv://fatahsbs:ZukzuztP6WJlKG1v@nodejs.byd7tty.mongodb.net/",
-      { dbName: "fullstacksTasks" }
-    );
+    await mongoose.connect(process.env.DATABASE_URL, {
+      dbName: process.env.DATABASE_NAME,
+    });
 
     console.log("Connected to MongoDB");
 
