@@ -10,10 +10,17 @@ const authRouter = require("./auth/auth.router.js");
 const usersRouter = require("./users/users.router.js");
 const mongoose = require("mongoose");
 const expressWinstonLogger = require("./middleware/expressWinston.middleware.js");
+const dotenv = require("dotenv");
+
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
+const envFile = `.env.${process.env.NODE_ENV}`;
+
+dotenv.config({
+  path: envFile,
+});
 
 const app = express();
 const port = 3001;
-console.log(process.env.NODE_ENV);
 
 app.use(express.json());
 
