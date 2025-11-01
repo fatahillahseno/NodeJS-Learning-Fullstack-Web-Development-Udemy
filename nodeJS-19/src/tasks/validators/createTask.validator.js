@@ -29,6 +29,8 @@ const createTaskValidator = [
     "inProgress",
     "completed",
   ]),
+
+  body("user").notEmpty().isMongoId(),
 ];
 
 module.exports = createTaskValidator;
