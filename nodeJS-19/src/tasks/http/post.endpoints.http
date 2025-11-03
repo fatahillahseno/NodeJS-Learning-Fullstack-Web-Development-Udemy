@@ -1,8 +1,9 @@
 POST http://localhost:3001/tasks
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTA1YTcwYjMwMzUwNDdiOWQyZDc0OGUiLCJlbWFpbCI6ImpvaG5AZG9lLmNvbSIsImlhdCI6MTc2MjE0MDM5MywiZXhwIjoxNzYyMjI2NzkzfQ.nYq8ReGfZ5R9qVMaOc9KD5G5QqIhmYnc5OEsd7oZaNY
 
 {
-  "title" : "Task with a user",
+  "title" : "Task with a user that has token",
   "dueDate" : "2025-01-01T12:00:00Z",
   "description" : "Ini adalah deskrispi yang ada di dalam task, berisikan apa saja yang akan dilakukan",
   "priority" : "high",
