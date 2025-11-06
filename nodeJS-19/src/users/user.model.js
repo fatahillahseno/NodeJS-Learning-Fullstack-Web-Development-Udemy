@@ -67,5 +67,5 @@ module.exports = User;
  *       firstName: John
  *       lastName: Doe
  *       email: john@doe.com
- *       password: Test1234#
+ *       password: Password1234#
  */
